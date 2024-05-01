@@ -3,7 +3,7 @@ import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 
 
-def display_prediction(df, forecast, test_n):
+def display_prediction_prophet(df, forecast, test_n):
     # Создание графиков
     fact_trace = go.Scatter(x=df['ds'], y=df['y'], name='Факт', mode='lines+markers')
     pred_trace = go.Scatter(x=forecast['ds'][-test_n:], y=forecast['yhat'][-test_n:], name='Прогноз', line=dict(color='red'))
