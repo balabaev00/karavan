@@ -4,6 +4,7 @@ import os
 
 from constants.constants import PREDICTION_PRODUCTS
 from helpers.check_prepare_load_by_path import check_prepare_load_by_path
+from prophet_helpers.build_future_dataframe import build_future_dataframe
 from prophet_helpers.load_models import load_models
 
 from helpers.display_prediction import display_prediction
@@ -40,8 +41,11 @@ predictions = st.sidebar.number_input(
     placeholder="Введите число"
 )
 
-future = current_model.make_future_dataframe(periods=predictions)
+future = build_future_dataframe(df, predictions)
+print(df['Дата'])
+print(future)
 forecast = current_model.predict(future)
+total_count_prediction = int(forecast['yhat'][-predictions:].sum())
 
 df_product = df.groupby(['Название товара', 'Магазин', 'Дата'])['Количество (шт/кг)'].sum().reset_index()
 df_product = df_product.loc[df_product['Название товара'] == select_product]
@@ -49,3 +53,5 @@ df_product = df_product.loc[df_product['Название товара'] == selec
 data2 = build_base_dataframe(df_product)
 
 display_prediction(data2, forecast, predictions)
+
+st.write('Итого за ' + str(predictions) + ' дней будет продано ' + str(total_count_prediction))
