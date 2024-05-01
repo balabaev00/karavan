@@ -21,4 +21,4 @@ def get_check_count(df: pd.DataFrame):
 
 
 def get_most_popular_products(df: pd.DataFrame, count: int):
-    return df['Название товара'].value_counts().sort_values(ascending=False).nlargest(count)
+    return df.groupby(['Название товара'])['Количество (шт/кг)'].sum().sort_values(ascending=False).nlargest(count)

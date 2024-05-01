@@ -6,6 +6,7 @@ from constants.constants import CHECK_FOLDER
 from enums.shop_name_enum import ShopName
 from helpers.check_loader import CheckLoader
 from helpers.check_helper import *
+from helpers.check_prepare_load import check_prepare_load
 
 
 class CaravanApp:
@@ -65,7 +66,7 @@ class CaravanApp:
 
         # Проверка, были ли файлы загружены
         if uploaded_files is not None and len(uploaded_files) > 0:
-            self.data = self.file_load(uploaded_files)
+            self.data = check_prepare_load(uploaded_files)
 
         # c1, c2 = st.columns((7, 3))
         # with c1:
