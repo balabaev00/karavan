@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 import os
 
 from constants.constants import PREDICTION_PRODUCTS
