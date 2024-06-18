@@ -8,5 +8,6 @@ def build_future_dataframe(df, prediction):
 
     march_dates = pd.date_range(start=earliest_date, end=latest_date + pd.Timedelta(days=prediction))
     future = pd.DataFrame({'ds': march_dates})
+    future.set_index('ds', inplace=True)
 
     return future

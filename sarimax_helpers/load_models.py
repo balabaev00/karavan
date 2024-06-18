@@ -11,5 +11,8 @@ def load_sarimax_models(models_path=MODELS_PATH):
         ),
         ProductName.Russian_Bread.value: pickle.load(
             open(models_path + '/russian_bread_400.pkl', 'rb')
-        )
+        ),
+        # ProductName.SPWheatBreadWithFlaxSeeds.value: pickle.load(
+        #     open(models_path + '/sp_wheat_bread_with_flax_seeds.pkl', 'rb')
+        # )
     }

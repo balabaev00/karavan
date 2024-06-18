@@ -4,5 +4,6 @@ CHECK_FOLDER = 'data/check'
 
 PREDICTION_PRODUCTS = (
     ProductName.TShirtPackage30x54.value,
-    ProductName.Russian_Bread.value
+    ProductName.Russian_Bread.value,
+    ProductName.SPWheatBreadWithFlaxSeeds.value
 )
